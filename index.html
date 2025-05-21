@@ -3,12 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Василь Хошовський - Креативні рішення в сфері цифрового контенту</title>
+    <title>Василь Хошовський - Креативні відеопроекти та ідеї</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Додаткові стилі для новго дизайну */
+        :root {
+            --primary-color: #2a2a72;
+            --secondary-color: #ff7e5f;
+            --accent-color: #0f4c81;
+            --dark-blue: #101820;
+            --light-color: #f9f9f9;
+            --dark-color: #333;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--light-color);
+        }
+        
+        .hero {
+            background-color: var(--dark-blue);
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(42, 42, 114, 0.8) 0%, rgba(255, 126, 95, 0.4) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .video-section {
+            padding: 5rem 0;
+            background-color: #f5f5f5;
+        }
+        
+        .video-container {
+            margin-bottom: 3rem;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+        .video-description {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .video-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .creative-process {
+            padding: 5rem 0;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .process-card {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .process-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .process-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .ai-section {
+            padding: 5rem 0;
+            background-color: #f5f5f5;
+        }
+        
+        .section-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .ai-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .examples-section {
+            padding: 5rem 0;
+        }
+        
+        .example-video {
+            margin-bottom: 3rem;
+        }
+        
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .btn-white {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid white;
+        }
+        
+        .btn-white:hover {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        /* Responsive fixes */
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -21,9 +219,9 @@
             <nav>
                 <ul>
                     <li><a href="#home">Головна</a></li>
-                    <li><a href="#about">Про мене</a></li>
-                    <li><a href="#services">Послуги</a></li>
-                    <li><a href="#portfolio">Портфоліо</a></li>
+                    <li><a href="#process">Процес</a></li>
+                    <li><a href="#videos">Відеопроекти</a></li>
+                    <li><a href="#ai">ШІ рішення</a></li>
                     <li><a href="#contact">Контакти</a></li>
                 </ul>
             </nav>
@@ -33,147 +231,148 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Креативні рішення для вашого бізнесу</h1>
-            <p>Створюю унікальний відео-контент, що допомагає брендам виділятися. ШІ - лише один з інструментів, найцінніше - це ідея.</p>
-            <a href="#contact" class="btn">Зв'язатися зі мною</a>
+            <h1>Креативні відеопроекти, що запам'ятовуються</h1>
+            <p>Найцінніше в моїх послугах — це ідея. ШІ лише один з інструментів, який допомагає втілити творчі концепції в життя.</p>
+            <a href="#contact" class="btn">Замовити проект</a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- Creative Process Section -->
+    <section class="creative-process" id="process">
         <div class="container">
-            <h2 class="section-title">Про мене</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Креативний професіонал з досвідом у створенні унікальних відеопроектів</h3>
-                    <p>Мене звати Василь Хошовський, і я допомагаю брендам виділятися через якісний відео-контент. Моя спеціалізація — створення креативних концепцій, що базуються на глибокому розумінні цільової аудиторії та потреб бізнесу.</p>
-                    <p>У своїй роботі я поєднує традиційні методи створення контенту з новітніми технологіями, включаючи ШІ. Проте я переконаний, що найцінніша частина творчого процесу — це ідея, що народжується з досліджень та глибинних інтерв'ю з цільовою аудиторією.</p>
-                    <p>Мій досвід включає створення рекламних роликів, короткометражних фільмів, вірусного контенту та креативних концепцій для брендів різних масштабів.</p>
+            <h2 class="section-title">Мій креативний процес</h2>
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Дослідження</h3>
+                    <p>Тижні ретельного дослідження ринку, конкурентів та цільової аудиторії для розуміння потреб та контексту.</p>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1576834759007-919b19f550f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Креативний процес">
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Глибинні інтерв'ю</h3>
+                    <p>Проведення детальних інтерв'ю з представниками цільової аудиторії для виявлення інсайтів та ідей.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Креативна концепція</h3>
+                    <p>Розробка унікальної концепції на основі зібраних даних та інсайтів — найцінніший етап всього процесу.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Реалізація</h3>
+                    <p>Втілення креативної концепції у високоякісний відеоконтент із залученням сучасних технологій, включаючи ШІ.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Video Projects Section -->
+    <section class="video-section" id="videos">
         <div class="container">
-            <h2 class="section-title">Мої послуги</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <h3>Креативні рекламні ролики</h3>
-                        <p>Створення унікальних рекламних роликів, що привертають увагу та запам'ятовуються. Повний цикл від ідеї до реалізації.</p>
-                    </div>
+            <h2 class="section-title">Приклади моїх робіт</h2>
+            
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/LW7n1m8R3C0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3>Креативні концепції</h3>
-                        <p>Розробка креативних концепцій на основі глибинних досліджень ринку, конкурентів та цільової аудиторії.</p>
-                    </div>
+                <div class="video-description">
+                    <h3>Зразок креативного рішення для бізнесу</h3>
+                    <p>Це відео демонструє тип контенту, який я створюю для клієнтів. Такі проекти зазвичай займають близько тижня, але результат вартий кожної хвилини роботи. Найцінніше тут — це ідея, розроблена на основі глибокого дослідження ринку та розуміння потреб цільової аудиторії.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3>ШІ-генерований контент</h3>
-                        <p>Використання сучасних технологій ШІ для створення унікального контенту з високим віральним потенціалом.</p>
-                    </div>
+            </div>
+            
+            <h3 class="section-title">Приклади креативних рішень на основі досліджень</h3>
+            
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/jydZomcx8qE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-film"></i>
-                        </div>
-                        <h3>Короткометражні фільми</h3>
-                        <p>Створення художніх та документальних короткометражних фільмів для брендів та особистих проектів.</p>
-                    </div>
+                <div class="video-description">
+                    <h3>Проект Abwehr</h3>
+                    <p>Це приклад мого креативу, якому передували тижні досліджень теми і глибинні інтерв'ю з цільовою аудиторією — найдорожча частина роботи. Проект демонструє, як глибоке розуміння контексту та потреб дозволяє створювати дійсно ефективний відеоконтент.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <h3>Консультації</h3>
-                        <p>Консультування з питань креативних стратегій, розробки ідей та використання сучасних технологій у відеовиробництві.</p>
-                    </div>
+            </div>
+            
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/PD19qlhYTEk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Маркетингові дослідження</h3>
-                        <p>Проведення глибинних досліджень та інтерв'ю для розуміння потреб цільової аудиторії та розробки ефективних креативних рішень.</p>
-                    </div>
+                <div class="video-description">
+                    <h3>Креативна концепція на основі досліджень</h3>
+                    <p>Ще один приклад проекту Abwehr, який демонструє важливість глибинних досліджень при розробці креативної концепції. Такі проекти мають високу цінність для клієнтів, оскільки базуються на реальному розумінні ринку.</p>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/B26rkUXi9BM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-description">
+                    <h3>Ефективні відеорішення</h3>
+                    <p>Демонстрація того, як концепція, розроблена на основі детальних досліджень, втілюється у високоякісний відеоконтент. Це результат багатотижневої роботи над розумінням потреб цільової аудиторії.</p>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/_ZrwGLFkiXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-description">
+                    <h3>Творчий підхід до маркетингового контенту</h3>
+                    <p>Завершальний приклад з серії проекту Abwehr, який демонструє повний цикл від дослідження до реалізації. Такі проекти показують цінність креативної ідеї, розробленої з глибоким розумінням контексту.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
+    <!-- AI Section -->
+    <section class="ai-section" id="ai">
         <div class="container">
-            <h2 class="section-title">Моє портфоліо</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1564419320461-6870880221ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Проект Abwehr" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3>Проект "Abwehr"</h3>
-                        <p>Креативна рекламна кампанія після тижнів досліджень та глибинних інтерв'ю</p>
-                        <a href="https://www.youtube.com/watch?v=jydZomcx8qE" class="portfolio-btn" target="_blank">Переглянути</a>
-                    </div>
+            <h2 class="section-title">ШІ як інструмент креативності</h2>
+            
+            <div class="section-two-col">
+                <div class="ai-content">
+                    <h3>Штучний інтелект — потужний інструмент, а не заміна креативності</h3>
+                    <p>Я використовую технології штучного інтелекту як один з інструментів творчого процесу, а не як заміну людській креативності. Найцінніше — це ідея та концепція, розроблена на основі глибокого розуміння ринку, а ШІ допомагає втілити цю ідею в життя.</p>
+                    <p>Завдяки поєднанню людської креативності та можливостей ШІ, можна створювати:</p>
+                    <ul>
+                        <li>Маленькі вірусні ролики для соціальних мереж</li>
+                        <li>ШІ короткометражки з високим віральним потенціалом</li>
+                        <li>Креативні рекламні матеріали нового покоління</li>
+                    </ul>
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1551817958-d9d86fb29431?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Проект NeuroDream" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3>AI Короткометражка</h3>
-                        <p>ШІ-генерований короткометражний фільм з великим віральним потенціалом</p>
-                        <a href="https://youtu.be/Hj1vT-0Do1I?si=yNWIyqqz9gvrd9FL" class="portfolio-btn" target="_blank">Переглянути</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1561153703-41d003d7b9b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Креативний ролик" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3>Маленькі вірусні ролики</h3>
-                        <p>Серія коротких відео з високою взаємодією для соціальних мереж</p>
-                        <a href="https://www.instagram.com/neurodream_ai/" class="portfolio-btn" target="_blank">Переглянути</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Креативна концепція" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3>Креативна концепція</h3>
-                        <p>Розробка унікальної креативної концепції для бренду</p>
-                        <a href="#" class="portfolio-btn">Переглянути</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Маркетингові дослідження" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3>Маркетингові дослідження</h3>
-                        <p>Глибинний аналіз цільової аудиторії та розробка креативної стратегії</p>
-                        <a href="#" class="portfolio-btn">Переглянути</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ШІ проект" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3>ШІ у креативі</h3>
-                        <p>Інноваційне використання технологій ШІ для створення унікального контенту</p>
-                        <a href="#" class="portfolio-btn">Переглянути</a>
+                <div class="ai-examples">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Hj1vT-0Do1I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
+            
+            <div class="example-video" style="margin-top: 3rem;">
+                <h3 class="section-title">Приклади маленьких вірусних роликів</h3>
+                <p style="text-align: center; margin-bottom: 2rem;">Такі ролики можна створювати декілька за тиждень, вони мають високий віральний потенціал і ефективно привертають увагу аудиторії.</p>
+                <div class="video-description">
+                    <h3>Приклади ШІ-контенту для соціальних мереж</h3>
+                    <p>На <a href="https://www.instagram.com/neurodream_ai/" target="_blank">Instagram: neurodream_ai</a> ви можете ознайомитись з прикладами маленьких роликів, створених за допомогою ШІ. Такі проекти демонструють, як технології можуть допомагати втілювати креативні ідеї.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container cta-content">
+            <h3>Готові створити щось видатне?</h3>
+            <p>Давайте працювати разом над проектом, який поєднає глибокі дослідження, креативну концепцію та сучасні технології для досягнення вашої бізнес-мети.</p>
+            <a href="#contact" class="btn btn-white">Обговорити проект</a>
         </div>
     </section>
 
@@ -192,7 +391,7 @@
                     <input type="text" class="form-control" placeholder="Тема">
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" placeholder="Ваше повідомлення" required></textarea>
+                    <textarea class="form-control" placeholder="Опишіть ваш проект або питання" required></textarea>
                 </div>
                 <button type="submit" class="btn">Надіслати повідомлення</button>
             </form>
@@ -207,25 +406,22 @@
                 <p>Креативні рішення для вашого бізнесу. Створюю унікальний відео-контент, що допомагає брендам виділятися серед конкурентів.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="footer-section">
                 <h3>Контакти</h3>
                 <p><i class="fas fa-envelope"></i> vasyl.khoschovsky.1@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +380 XX XXX XX XX</p>
                 <p><i class="fas fa-map-marker-alt"></i> Івано-Франківськ, Україна</p>
             </div>
             <div class="footer-section">
                 <h3>Швидкі посилання</h3>
                 <div class="footer-links">
                     <a href="#home">Головна</a>
-                    <a href="#about">Про мене</a>
-                    <a href="#services">Послуги</a>
-                    <a href="#portfolio">Портфоліо</a>
+                    <a href="#process">Процес</a>
+                    <a href="#videos">Відеопроекти</a>
+                    <a href="#ai">ШІ рішення</a>
                     <a href="#contact">Контакти</a>
                 </div>
             </div>
@@ -235,6 +431,51 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Basic JavaScript for mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const nav = document.querySelector('nav ul');
+            
+            mobileToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+            
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                    }
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Sticky header
+            const header = document.querySelector('header');
+            const headerHeight = header.offsetHeight;
+            
+            function updateHeader() {
+                if (window.scrollY > 100) {
+                    header.classList.add('sticky');
+                } else {
+                    header.classList.remove('sticky');
+                }
+            }
+            
+            window.addEventListener('scroll', updateHeader);
+            updateHeader();
+        });
+    </script>
 </body>
 </html>
