@@ -1,204 +1,121 @@
-// Mobile Menu Toggle
+// Document ready function
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('nav ul');
-
-    mobileToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-
-    // Header Scroll Effect
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-
-    // Smooth Scrolling
+    const nav = document.querySelector('nav ul');
+    
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+    }
+    
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-
-            navMenu.classList.remove('active');
-
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            
+            // Close mobile menu if open
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+            
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
-
-    // Testimonial Slider
-    const testimonialSlides = document.querySelector('.testimonial-slides');
-    const testimonialDots = document.querySelectorAll('.testimonial-dot');
-    let currentSlide = 0;
-
-    if (testimonialSlides && testimonialDots.length) {
-        testimonialDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                updateSlider();
-            });
-        });
-
-        function updateSlider() {
-            testimonialSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
-            testimonialDots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
+    
+    // Sticky header on scroll
+    const header = document.querySelector('header');
+    
+    if (header) {
+        function updateHeader() {
+            if (window.scrollY > 100) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
         }
-
-        // Auto slide
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % testimonialDots.length;
-            updateSlider();
-        }, 5000);
+        
+        window.addEventListener('scroll', updateHeader);
+        updateHeader(); // Initial check
     }
-
-    // FAQ Accordion
-    const faqItems = document.querySelectorAll('.faq-item');
     
-    if (faqItems.length) {
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
+    // Animation on scroll
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        
+        elements.forEach(function(element) {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
             
-            question.addEventListener('click', () => {
-                // Close all other items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current item
-                item.classList.toggle('active');
-            });
+            if (elementPosition < screenPosition) {
+                element.classList.add('animated');
+            }
         });
-    }
-
-    // Portfolio Filter
-    const filterBtns = document.querySelectorAll('.portfolio-filter button');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    };
     
-    if (filterBtns.length && portfolioItems.length) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                const filter = btn.getAttribute('data-filter');
-                
-                // Show/hide portfolio items based on filter
-                portfolioItems.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
-
-    // Counter Animation
-    const counters = document.querySelectorAll('.counter');
+    // Add animation class to elements
+    document.querySelectorAll('.video-container, .process-card, .video-description, .section-title').forEach(element => {
+        element.classList.add('animate-on-scroll');
+    });
     
-    if (counters.length) {
-        const counterObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    let count = 0;
-                    const updateCounter = () => {
-                        const increment = target / 100;
-                        if (count < target) {
-                            count += increment;
-                            counter.innerText = Math.ceil(count);
-                            setTimeout(updateCounter, 10);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    updateCounter();
-                    observer.unobserve(counter);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        counters.forEach(counter => {
-            counterObserver.observe(counter);
-        });
-    }
-
-    // Animation on Scroll
-    const animatedElements = document.querySelectorAll('.animate');
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Initial check
     
-    if (animatedElements.length) {
-        const animationObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        animatedElements.forEach(element => {
-            animationObserver.observe(element);
-        });
-    }
-
-    // Form Validation
+    // Form validation
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Basic validation
-            let valid = true;
-            const inputs = contactForm.querySelectorAll('input, textarea');
+            // Simple validation
+            let isValid = true;
+            const requiredFields = contactForm.querySelectorAll('[required]');
             
-            inputs.forEach(input => {
-                if (input.hasAttribute('required') && !input.value.trim()) {
-                    valid = false;
-                    input.classList.add('error');
-                } else if (input.type === 'email' && input.value.trim()) {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(input.value.trim())) {
-                        valid = false;
-                        input.classList.add('error');
-                    } else {
-                        input.classList.remove('error');
-                    }
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
                 } else {
-                    input.classList.remove('error');
+                    field.classList.remove('error');
                 }
             });
             
-            if (valid) {
-                // Here you would typically send the form data to a server
-                // For demo purposes, we'll just show a success message
-                contactForm.innerHTML = '<div class="success-message">Дякуємо за ваше повідомлення! Ми зв\'яжемося з вами найближчим часом.</div>';
+            // Email validation
+            const emailField = contactForm.querySelector('input[type="email"]');
+            if (emailField && !isValidEmail(emailField.value) && emailField.value.trim()) {
+                isValid = false;
+                emailField.classList.add('error');
+            }
+            
+            if (isValid) {
+                // Here you would normally submit the form to a backend
+                // For now, just show a success message
+                alert('Повідомлення успішно надіслано! Ми зв\'яжемося з вами найближчим часом.');
+                contactForm.reset();
+            } else {
+                alert('Будь ласка, заповніть всі обов\'язкові поля правильно.');
             }
         });
         
         // Remove error class on input
-        contactForm.querySelectorAll('input, textarea').forEach(input => {
-            input.addEventListener('input', () => {
-                input.classList.remove('error');
+        contactForm.querySelectorAll('input, textarea').forEach(field => {
+            field.addEventListener('input', function() {
+                this.classList.remove('error');
             });
         });
+    }
+    
+    // Helper function to validate email
+    function isValidEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 });
