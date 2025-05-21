@@ -3,115 +3,780 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Консультаційні послуги</title>
+    <title>Василь Хошовський - Креативні рішення в сфері цифрового контенту</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary-color: #2a2a72;
+            --secondary-color: #ff7e5f;
+            --accent-color: #0f4c81;
+            --light-color: #f9f9f9;
+            --dark-color: #333;
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
         }
+
+        /* Header Styles */
         header {
-            background: #333;
-            color: #fff;
-            padding: 20px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(42, 42, 114, 0.95);
+            padding: 0.5rem 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 76, 129, 0.8), rgba(15, 76, 129, 0.8)), url('https://images.unsplash.com/photo-1605379399843-5870eea9b74e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--secondary-color);
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 0.8rem auto;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+
+        .about-text h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #f5f5f5;
+            padding: 6rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 76, 129, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 1rem;
             text-align: center;
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 10px;
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
         }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 5px 10px;
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.1);
         }
-        nav a:hover {
-            background: #555;
+
+        .portfolio-overlay h3 {
+            color: white;
+            margin-bottom: 0.5rem;
         }
-        .main-content {
-            background: #fff;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
+
+        .portfolio-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
         }
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .service-card {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .cta-button {
+
+        .portfolio-btn {
             display: inline-block;
-            background: #333;
-            color: #fff;
-            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-color);
         }
-        .cta-button:hover {
-            background: #555;
+
+        .portfolio-btn:hover {
+            background-color: transparent;
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 6rem 0;
+        }
+
+        .contact .section-title:after {
+            background-color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .contact-form .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-section h3:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            margin-top: 0.8rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #ddd;
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            margin-right: 1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav li {
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-text, .about-image {
+                margin-bottom: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1>Консультаційні послуги</h1>
+        <div class="container header-container">
+            <a href="#" class="logo">HO|Vision</a>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
             <nav>
-                <a href="#about">Про мене</a>
-                <a href="#services">Послуги</a>
-                <a href="#contact">Контакти</a>
+                <ul>
+                    <li><a href="#home">Головна</a></li>
+                    <li><a href="#about">Про мене</a></li>
+                    <li><a href="#services">Послуги</a></li>
+                    <li><a href="#portfolio">Портфоліо</a></li>
+                    <li><a href="#contact">Контакти</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <div class="container">
-        <section class="main-content" id="about">
-            <h2>Вітаю на моєму сайті!</h2>
-            <p>Я надаю професійні консультаційні послуги у сфері IT та розробки. Моя мета - допомогти людям реалізувати їхні ідеї за допомогою сучасних технологій.</p>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Креативні рішення для вашого бізнесу</h1>
+            <p>Створюю унікальний відео-контент, що допомагає брендам виділятися. ШІ - лише один з інструментів, найцінніше - це ідея.</p>
+            <a href="#contact" class="btn">Зв'язатися зі мною</a>
+        </div>
+    </section>
 
-        <section class="main-content" id="services">
-            <h2>Мої послуги</h2>
-            <div class="services">
-                <div class="service-card">
-                    <h3>IT Консультації</h3>
-                    <p>Допоможу визначити технічні рішення для вашого проекту та розробити стратегію їх реалізації.</p>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Про мене</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Креативний професіонал з досвідом у створенні унікальних відеопроектів</h3>
+                    <p>Мене звати Василь Хошовський, і я допомагаю брендам виділятися через якісний відео-контент. Моя спеціалізація — створення креативних концепцій, що базуються на глибокому розумінні цільової аудиторії та потреб бізнесу.</p>
+                    <p>У своїй роботі я поєднує традиційні методи створення контенту з новітніми технологіями, включаючи ШІ. Проте я переконаний, що найцінніша частина творчого процесу — це ідея, що народжується з досліджень та глибинних інтерв'ю з цільовою аудиторією.</p>
+                    <p>Мій досвід включає створення рекламних роликів, короткометражних фільмів, вірусного контенту та креативних концепцій для брендів різних масштабів.</p>
                 </div>
-                <div class="service-card">
-                    <h3>Розробка ідей</h3>
-                    <p>Перетворимо ваші ідеї у конкретні технічні рішення та плани реалізації.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Менторство</h3>
-                    <p>Навчання основам IT та програмування для новачків в галузі.</p>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1576834759007-919b19f550f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Креативний процес">
                 </div>
             </div>
-            <a href="https://book.yourwebsite.com" class="cta-button">Замовити консультацію</a>
-        </section>
+        </div>
+    </section>
 
-        <section class="main-content" id="contact">
-            <h2>Контакти</h2>
-            <p>Email: vasyl.khoschovsky.1@gmail.com</p>
-            <p>Всі консультації проходять онлайн через Google Meet або Zoom.</p>
-        </section>
-    </div>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Мої послуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Креативні рекламні ролики</h3>
+                        <p>Створення унікальних рекламних роликів, що привертають увагу та запам'ятовуються. Повний цикл від ідеї до реалізації.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Креативні концепції</h3>
+                        <p>Розробка креативних концепцій на основі глибинних досліджень ринку, конкурентів та цільової аудиторії.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>ШІ-генерований контент</h3>
+                        <p>Використання сучасних технологій ШІ для створення унікального контенту з високим віральним потенціалом.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>Короткометражні фільми</h3>
+                        <p>Створення художніх та документальних короткометражних фільмів для брендів та особистих проектів.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Консультації</h3>
+                        <p>Консультування з питань креативних стратегій, розробки ідей та використання сучасних технологій у відеовиробництві.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Маркетингові дослідження</h3>
+                        <p>Проведення глибинних досліджень та інтерв'ю для розуміння потреб цільової аудиторії та розробки ефективних креативних рішень.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Моє портфоліо</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1564419320461-6870880221ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Проект Abwehr" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Проект "Abwehr"</h3>
+                        <p>Креативна рекламна кампанія після тижнів досліджень та глибинних інтерв'ю</p>
+                        <a href="https://www.youtube.com/watch?v=jydZomcx8qE" class="portfolio-btn" target="_blank">Переглянути</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551817958-d9d86fb29431?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Проект NeuroDream" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>AI Короткометражка</h3>
+                        <p>ШІ-генерований короткометражний фільм з великим віральним потенціалом</p>
+                        <a href="https://youtu.be/Hj1vT-0Do1I?si=yNWIyqqz9gvrd9FL" class="portfolio-btn" target="_blank">Переглянути</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1561153703-41d003d7b9b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Креативний ролик" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Маленькі вірусні ролики</h3>
+                        <p>Серія коротких відео з високою взаємодією для соціальних мереж</p>
+                        <a href="https://www.instagram.com/neurodream_ai/" class="portfolio-btn" target="_blank">Переглянути</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Креативна концепція" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Креативна концепція</h3>
+                        <p>Розробка унікальної креативної концепції для бренду</p>
+                        <a href="#" class="portfolio-btn">Переглянути</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Маркетингові дослідження" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Маркетингові дослідження</h3>
+                        <p>Глибинний аналіз цільової аудиторії та розробка креативної стратегії</p>
+                        <a href="#" class="portfolio-btn">Переглянути</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ШІ проект" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>ШІ у креативі</h3>
+                        <p>Інноваційне використання технологій ШІ для створення унікального контенту</p>
+                        <a href="#" class="portfolio-btn">Переглянути</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Зв'яжіться зі мною</h2>
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Ваше ім'я" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Ваш email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Тема">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Ваше повідомлення" required></textarea>
+                </div>
+                <button type="submit" class="btn">Надіслати повідомлення</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>HO|Vision</h3>
+                <p>Креативні рішення для вашого бізнесу. Створюю унікальний відео-контент, що допомагає брендам виділятися серед конкурентів.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Контакти</h3>
+                <p><i class="fas fa-envelope"></i> vasyl.khoschovsky.1@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +380 XX XXX XX XX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Івано-Франківськ, Україна</p>
+            </div>
+            <div class="footer-section">
+                <h3>Швидкі посилання</h3>
+                <div class="footer-links">
+                    <a href="#home">Головна</a>
+                    <a href="#about">Про мене</a>
+                    <a href="#services">Послуги</a>
+                    <a href="#portfolio">Портфоліо</a>
+                    <a href="#contact">Контакти</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HO|Vision. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                navMenu.classList.remove('active');
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
